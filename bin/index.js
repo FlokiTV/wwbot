@@ -34,7 +34,7 @@ class wBot {
         this.#wpp = wpp
     }
     async triggerCommand(client, command, _args) {
-        // console.log("triggerCommand", command, _args)
+        console.log("triggerCommand", command, _args.join(' '))
         let args = {
             id: client.id
         }
@@ -54,9 +54,10 @@ class wBot {
                 // cfg.url = this.parseURL(args, cfg.url)
                 cfg = this.parseBody(args, http, JSON.stringify(cfg))
                 cfg = JSON.parse(cfg)
-                // console.log(cfg)
+                console.log(cfg)
                 try {
                     const { data } = await axios(cfg)
+                    console.log(data)
                     http[request.store] = { ...data }
                 } catch (error) {
                     console.log(error.response.data)
